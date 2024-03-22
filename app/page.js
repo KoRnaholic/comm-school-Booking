@@ -4,6 +4,8 @@ import { fetchApi } from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import hotemImg from "@/images/hotel.jpg";
+import HotelDistance from "@/components/location/Location";
+import heart from "@/icons/heart.svg";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -18,9 +20,13 @@ export default function Home() {
 
   console.log(data);
   return (
-    <div className="p-10 flex flex-wrap gap-8 justify-center items-center">
+    <div className="p-10 mt-52 flex flex-wrap gap-8 justify-center items-center">
       {data.map((item) => {
-        let { xl_picture_url } = item;
+        let { xl_picture_url, latitude, longitude } = item;
+        const hotelLocation = {
+          lat: latitude,
+          lng: longitude,
+        };
         if (
           xl_picture_url ===
             "https://a0.muscache.com/im/pictures/12516562/bf7a2598_original.jpg?aki_policy=x_large" ||
@@ -35,26 +41,39 @@ export default function Home() {
         return (
           <div
             key={item?.id}
-            className="w-[300px] h-[400px]  rounded overflow-hidden shadow-lg cursor-pointer"
+            className="w-[300px] h-[410px]  rounded overflow-hidden shadow-lg cursor-pointer "
           >
-            <Image
-              className="w-full h-[250px] rounded-md"
-              src={xl_picture_url}
-              width={250}
-              height={250}
-              alt="Hotel"
-              quality={100}
-              priority={false}
-            />
+            <span className="relative">
+              <Image
+                className="w-full h-[250px] rounded-md relative"
+                src={xl_picture_url}
+                width={250}
+                height={250}
+                alt="Hotel"
+                quality={100}
+                priority={false}
+              />
+              <Image
+                className="absolute top-2 right-6 w-[25px] border-1 hover:scale-150 transition-all"
+                src={heart}
+                alt="heart"
+              />
+            </span>
+
             <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-2">
+              <div className="font-bold text-md mb-2">
                 {item?.host_location}
               </div>
-              <p className="text-gray-700 text-base">{}</p>
-              <p className="text-gray-700 text-base">
-                ${item?.price} per night
-              </p>
-              <p className="text-gray-700 text-base">Rating: {}</p>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-gray-500 text-base">
+                  <HotelDistance hotelLocation={hotelLocation} />
+                </p>
+                <p className="text-gray-500 text-base flex gap-2">
+                  <span className="text-black font-bold ">${item?.price}</span>
+                  per night
+                </p>
+              </div>
             </div>
           </div>
         );

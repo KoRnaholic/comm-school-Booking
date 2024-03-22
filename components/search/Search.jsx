@@ -5,15 +5,8 @@ import DropdownMenuMap from "../dropDown/DropDownMap";
 
 export default function Search(props) {
   return (
-    <div className="flex justify-center">
-      <div className="flex justify-between items-center w-[400px] lg:w-[830px] bg-white shadow-lg border-t rounded-full font-semibold text-sm">
-        {/* <div className="group flex flex-col px-12 py-4 rounded-full hover:bg-gray-200 cursor-pointer">
-          <span>Where</span>
-          <input
-            className="group-hover:bg-gray-200 focus:outline-none"
-            placeholder="Search destinations"
-          />
-        </div> */}
+    <div className="flex justify-center transition-all">
+      <div className="flex justify-between items-center w-[400px] lg:w-[830px] transition-all bg-white shadow-lg border-t rounded-full font-semibold text-sm">
         <DropdownMenuMap />
         <div className=" hidden lg:flex flex-col px-8 py-4 rounded-full hover:bg-gray-200 cursor-pointer border-l-2">
           <span>Check in</span>

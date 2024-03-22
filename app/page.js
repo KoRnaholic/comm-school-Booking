@@ -20,8 +20,18 @@ export default function Home() {
   return (
     <div className="p-10 flex flex-wrap gap-8 justify-center items-center">
       {data.map((item) => {
-        const { host_location, price, xl_picture_url } = item;
-        // console.log(host_location, price, xl_picture_url);
+        let { xl_picture_url } = item;
+        if (
+          xl_picture_url ===
+            "https://a0.muscache.com/im/pictures/12516562/bf7a2598_original.jpg?aki_policy=x_large" ||
+          xl_picture_url ===
+            "https://a0.muscache.com/im/pictures/fd67b4b2-aa28-407a-80da-0d6707d59833.jpg?aki_policy=x_large" ||
+          xl_picture_url ===
+            "https://a0.muscache.com/im/pictures/105609373/70e3ceba_original.jpg?aki_policy=x_large" ||
+          xl_picture_url === null
+        ) {
+          xl_picture_url = hotemImg;
+        }
         return (
           <div
             key={item?.id}
@@ -29,7 +39,7 @@ export default function Home() {
           >
             <Image
               className="w-full h-[250px] rounded-md"
-              src={item?.xl_picture_url || hotemImg}
+              src={xl_picture_url}
               width={250}
               height={250}
               alt="Hotel"

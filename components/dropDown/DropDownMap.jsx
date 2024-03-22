@@ -26,10 +26,10 @@ export default function DropdownMenuMap() {
     <DropdownMenu className="shadow-lg flex ">
       <DropdownMenuTrigger asChild>
         {/* <Button variant="outline"> */}
-        <div className="group flex flex-col px-12 py-4 rounded-full hover:bg-gray-200 cursor-pointer">
+        <div className="group  flex  flex-col px-12 py-4 rounded-full hover:bg-gray-200 cursor-pointer">
           <span>Where</span>
           <input
-            className="group-hover:bg-gray-200 focus:outline-none"
+            className="group-hover:bg-gray-200 focus:outline-none "
             placeholder="Search destinations"
           />
         </div>

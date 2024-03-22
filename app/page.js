@@ -25,7 +25,7 @@ export default function Home() {
         return (
           <div
             key={item?.id}
-            className="w-[300px] h-[400px]  rounded overflow-hidden shadow-lg"
+            className="w-[300px] h-[400px]  rounded overflow-hidden shadow-lg cursor-pointer"
           >
             <Image
               className="w-full h-[250px] rounded-md"

@@ -19,27 +19,35 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 
-export default function DropdownMenuMap() {
+export default function DropdownMenuMap({ type }) {
   const [position, setPosition] = React.useState("bottom");
 
   return (
     <DropdownMenu className="shadow-lg flex ">
       <DropdownMenuTrigger asChild>
         {/* <Button variant="outline"> */}
-        <div className="group  flex  flex-col px-12 py-4 rounded-full hover:bg-gray-200 cursor-pointer">
-          <span>Where</span>
-          <input
-            className="group-hover:bg-gray-200 focus:outline-none "
-            placeholder="Search destinations"
-          />
+        <div
+          className={`group  flex  flex-col ${
+            type ? "" : "px-12 py-4 rounded-full hover:bg-gray-200"
+          } cursor-pointer`}
+        >
+          <span>{type ? "Search destinition" : "Where"}</span>
+          {type ? (
+            ""
+          ) : (
+            <input
+              className="group-hover:bg-gray-200 focus:outline-none "
+              placeholder={type ? "" : "Search destinations"}
+            />
+          )}
         </div>
         {/* </Button> */}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-96 flex flex-col p-5 rounded-2xl items-center justify-center">
         <div className="text-black font-bold">Search by region</div>
-        <div className="flex w-96 justify-center items-center">
+        <div className="flex w-96 justify-center items-center p-2">
           <DropdownMenuRadioGroup
-            className="flex flex-wrap w-1/3  py-2 gap-2"
+            className="flex flex-wrap w-1/3 "
             value={position}
             onValueChange={setPosition}
           >
@@ -70,7 +78,7 @@ export default function DropdownMenuMap() {
             <DropdownMenuSeparator />
           </DropdownMenuRadioGroup>
           <DropdownMenuRadioGroup
-            className="flex flex-wrap w-1/3 py-2 gap-2 "
+            className="flex flex-wrap w-1/3 "
             value={position}
             onValueChange={setPosition}
           >
@@ -100,7 +108,7 @@ export default function DropdownMenuMap() {
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
           <DropdownMenuRadioGroup
-            className="flex flex-wrap w-1/3 py-2 gap-2 "
+            className="flex flex-wrap w-1/3  "
             value={position}
             onValueChange={setPosition}
           >

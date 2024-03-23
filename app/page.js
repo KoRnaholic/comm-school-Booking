@@ -47,11 +47,11 @@ export default function Home() {
               <Image
                 className="w-full h-[250px] rounded-md relative"
                 src={xl_picture_url}
-                width={250}
-                height={250}
+                width={150}
+                height={150}
                 alt="Hotel"
                 quality={100}
-                priority={false}
+                priority
               />
               <Image
                 className="absolute top-2 right-6 w-[25px] border-1 hover:scale-150 transition-all"

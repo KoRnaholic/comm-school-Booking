@@ -6,7 +6,7 @@ import DropdownMenuMap from "../dropDown/DropDownMap";
 export default function Search({ type }) {
   if (type === "forNav") {
     return (
-      <div className="flex justify-center transition-all">
+      <div className=" justify-center transition-all hidden lg:flex">
         <div className="flex justify-center gap-3 pl-4 items-center py-2  transition-all bg-white shadow-lg border-t rounded-full font-semibold text-sm">
           <DropdownMenuMap type={type} />
           <div className=" hidden lg:flex flex-col px-2   cursor-pointer border-l-2">

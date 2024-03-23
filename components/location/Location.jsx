@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HotelDistance = ({ hotelLocation }) => {
+const Location = ({ hotelLocation }) => {
   const [userLocation, setUserLocation] = useState(null);
   const [distance, setDistance] = useState(null);
 
@@ -55,4 +55,4 @@ const HotelDistance = ({ hotelLocation }) => {
   );
 };
 
-export default HotelDistance;
+export default Location;

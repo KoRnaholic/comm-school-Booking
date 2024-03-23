@@ -4,8 +4,8 @@ import { fetchApi } from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import hotemImg from "@/images/hotel.jpg";
-import HotelDistance from "@/components/location/Location";
 import heart from "@/icons/heart.svg";
+import Location from "@/components/location/Location";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ export default function Home() {
 
   console.log(data);
   return (
-    <div className="p-10 mt-52 flex flex-wrap gap-8 justify-center items-center">
+    <div className="p-10 mt-52 flex flex-wrap gap-12 justify-center items-center">
       {data.map((item) => {
         let { xl_picture_url, latitude, longitude } = item;
         const hotelLocation = {
@@ -67,7 +67,7 @@ export default function Home() {
 
               <div className="flex flex-col gap-1">
                 <p className="text-gray-500 text-base">
-                  <HotelDistance hotelLocation={hotelLocation} />
+                  <Location hotelLocation={hotelLocation} />
                 </p>
                 <p className="text-gray-500 text-base flex gap-2">
                   <span className="text-black font-bold ">${item?.price}</span>

@@ -33,10 +33,12 @@ export default function Header() {
   return (
     <div className="fixed top-0 z-10 py-2 bg-white w-full">
       <header className="flex justify-between  items-center px-20 py-4">
-        <span className="flex items-center gap-2 text-[rgb(255,56,92)] w-[250px] text-2xl font-bold cursor-pointer">
-          <Image src={logo} alt="logo" width={30} />
-          <span className="hidden lg:block">airbnb</span>
-        </span>
+        <Link href="/">
+          <span className="flex items-center gap-2 text-[rgb(255,56,92)] w-[250px] text-2xl font-bold cursor-pointer">
+            <Image src={logo} alt="logo" width={30} />
+            <span className="hidden lg:block">airbnb</span>
+          </span>
+        </Link>
         {!scroll && (
           <nav className="hidden lg:flex transition-all">
             <ul className="flex items-center">

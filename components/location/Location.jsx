@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { formatNumber } from "@/lib/location";
 
 const Location = ({ hotelLocation }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -47,9 +48,7 @@ const Location = ({ hotelLocation }) => {
   return (
     <>
       {distance && (
-        <span>
-          {(distance.toFixed(1) / 1000).toLocaleString()} kilometers away
-        </span>
+        <span>{formatNumber(distance.toFixed(0) / 1000)} kilometers away</span>
       )}
     </>
   );

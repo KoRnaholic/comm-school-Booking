@@ -6,9 +6,16 @@ import { useEffect, useState } from "react";
 import hotemImg from "@/images/hotel.jpg";
 import heart from "@/icons/heart.svg";
 import Location from "@/components/location/Location";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [data, setData] = useState([]);
+
+  const router = useRouter();
+  const handleClick = (id) => {
+    // Set a new URL when the button is clicked
+    router.push(`/single-hotel/${id}`);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -22,7 +29,13 @@ export default function Home() {
   return (
     <div className="p-10 mt-52 flex flex-wrap gap-12 justify-center items-center">
       {data.map((item) => {
-        let { xl_picture_url, latitude, longitude } = item;
+        let {
+          xl_picture_url,
+          latitude,
+          longitude,
+          review_scores_rating: rating,
+          id,
+        } = item;
         const hotelLocation = {
           lat: latitude,
           lng: longitude,
@@ -38,10 +51,18 @@ export default function Home() {
         ) {
           xl_picture_url = hotemImg;
         }
+
+        if (rating > 95) {
+          rating = true;
+        } else {
+          rating = false;
+        }
+
         return (
           <div
+            onClick={() => handleClick(id)}
             key={item?.id}
-            className="w-[300px] h-[410px]  rounded overflow-hidden shadow-lg cursor-pointer "
+            className="w-[300px] h-[390px]  rounded overflow-hidden shadow-lg cursor-pointer"
           >
             <span className="relative">
               <Image
@@ -58,6 +79,13 @@ export default function Home() {
                 src={heart}
                 alt="heart"
               />
+              {rating ? (
+                <span className="absolute top-3 left-2 py-1 px-2 bg-slate-50 rounded-2xl text-sm font-medium">
+                  Guest favorite
+                </span>
+              ) : (
+                ""
+              )}
             </span>
 
             <div className="px-6 py-4">

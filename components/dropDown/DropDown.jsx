@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import hamburger from "@/icons/burger-menu.svg";
-import person from "@/icons/person.svg";
+import hamburger from "../../icons/burger-menu.svg";
+import person from "../../icons/person.svg";
 
 // import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +12,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../../components/ui/dropdown-menu";
 import Image from "next/image";
 
 export default function DropdownMenuRadioGroupDemo() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { formatNumber } from "@/lib/location";
+import { formatNumber } from "../../lib/location";
 
 const Location = ({ hotelLocation }) => {
   const [userLocation, setUserLocation] = useState(null);

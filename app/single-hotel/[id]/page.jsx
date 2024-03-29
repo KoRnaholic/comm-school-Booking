@@ -1,5 +1,5 @@
 "use client";
-import { fetchApi } from "@/lib/api";
+import { fetchApi } from "../../../lib/api";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 

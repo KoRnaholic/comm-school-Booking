@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import europe from "@/images/map/europe.webp";
-import italy from "@/images/map/italy.webp";
-import turkey from "@/images/map/turkey.webp";
-import usa from "@/images/map/USA.webp";
-import world from "@/images/map/world.jpg";
-import southAmerica from "@/images/map/south-america.webp";
+import europe from "../../images/map/europe.webp";
+import italy from "../../images/map/italy.webp";
+import turkey from "../../images/map/turkey.webp";
+import usa from "../../images/map/USA.webp";
+import world from "../../images/map/world.jpg";
+import southAmerica from "../../images/map/south-america.webp";
 
 // import { Button } from "@/components/ui/button";
 import {
@@ -16,7 +16,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../../components/ui/dropdown-menu";
 import Image from "next/image";
 
 export default function DropdownMenuMap({ type }) {
@@ -28,7 +28,9 @@ export default function DropdownMenuMap({ type }) {
         {/* <Button variant="outline"> */}
         <div
           className={`group  flex  flex-col ${
-            type ? "" : "px-12 py-4 rounded-full hover:bg-gray-200"
+            type
+              ? ""
+              : "data-[state=open]:bg-gray-200 px-12 py-4 rounded-full data-[state=closed]:hover:bg-gray-200"
           } cursor-pointer`}
         >
           <span>{type ? "Search destinition" : "Where"}</span>
@@ -36,7 +38,7 @@ export default function DropdownMenuMap({ type }) {
             ""
           ) : (
             <input
-              className="group-hover:bg-gray-200 focus:outline-none "
+              className="group-data-[state=open]:bg-gray-200 group-hover:bg-gray-200  focus:outline-none "
               placeholder={type ? "" : "Search destinations"}
             />
           )}

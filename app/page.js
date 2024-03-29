@@ -1,11 +1,11 @@
 "use client";
 
-import { fetchApi } from "@/lib/api";
+import { fetchApi } from "../lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import hotemImg from "@/images/hotel.jpg";
-import heart from "@/icons/heart.svg";
-import Location from "@/components/location/Location";
+import hotemImg from "../images/hotel.jpg";
+import heart from "../icons/heart.svg";
+import Location from "../components/location/Location";
 import { useRouter } from "next/navigation";
 
 export default function Home() {

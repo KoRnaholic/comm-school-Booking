@@ -2,10 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import logo from "@/icons/airbnb-logo.svg";
-import globus from "@/icons/globus.svg";
+import logo from "../../icons/airbnb-logo.svg";
+import globus from "../../icons/globus.svg";
 import Search from "../search/Search";
 import DropdownMenuRadioGroupDemo from "../dropDown/DropDown";
+import CalendarDropDown from "../calendar/CalendarDropDown";
+import { ModeToggle } from "../ui/toggleDarkmode";
 
 export default function Header() {
   const [scroll, setSctroll] = useState(false);
@@ -68,6 +70,7 @@ export default function Header() {
             <Image src={globus} alt="logo" width={16} />
           </span>
           <DropdownMenuRadioGroupDemo />
+          <ModeToggle />
         </div>
       </header>
       <div className="flex flex-col justify-center items-center gap-8">

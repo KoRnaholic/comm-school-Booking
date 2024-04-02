@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DropdownMenuRadioGroupDemo() {
   const [position, setPosition] = React.useState("bottom");
@@ -34,8 +35,12 @@ export default function DropdownMenuRadioGroupDemo() {
           value={position}
           onValueChange={setPosition}
         >
-          <DropdownMenuRadioItem value="top">Sign up</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">Log in</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="top">
+            <Link href="/signup">Sign up</Link>
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="bottom">
+            <Link href="/login">Log in</Link>
+          </DropdownMenuRadioItem>
           <DropdownMenuSeparator />
           <DropdownMenuRadioItem value="right">
             Gift cards

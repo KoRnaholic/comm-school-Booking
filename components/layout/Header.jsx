@@ -70,24 +70,10 @@ export default function Header() {
             <Image src={globus} alt="logo" width={16} />
           </span>
           <DropdownMenuRadioGroupDemo />
-          <ModeToggle />
+          {/* <ModeToggle /> */}
         </div>
       </header>
       <div className="flex flex-col justify-center items-center gap-8">
-        {/* <nav className="hidden">
-          <ul className="flex items-center">
-            <li className="py-2 px-5 hover:bg-slate-100 rounded-full">
-              <Link href="">Stays</Link>
-            </li>
-            <li className="py-2 px-5 hover:bg-slate-100 rounded-full">
-              <Link href="">Experiences</Link>
-            </li>
-            <li className="py-2 px-5 hover:bg-slate-100 rounded-full">
-              <Link href="">Online Experiences</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         {!scroll && <Search />}
       </div>
     </div>

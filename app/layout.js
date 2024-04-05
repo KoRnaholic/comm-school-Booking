@@ -14,7 +14,6 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     const handleRouteChnage = () => {
       const token = sessionStorage.getItem("token");
-
       if (!token) {
         router.push("/login");
       }

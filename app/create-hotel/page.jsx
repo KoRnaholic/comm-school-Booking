@@ -9,6 +9,7 @@ export default function Page() {
   const [description, setDescription] = useState("");
   const [pricePerNight, setPricePerNight] = useState("");
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handeImageChange = (e) => {
     setFile([...e.target.files]);
@@ -27,9 +28,11 @@ export default function Page() {
     }
     const imgURL = await Promise.all(
       file.map(async (file) => {
+        setLoading(true);
         const imgRef = ref(storage, `hotelimages/${file.name}`);
         const uploadResult = await uploadBytes(imgRef, file);
         return getDownloadURL(uploadResult.ref);
+        setLoading(false);
       })
     );
     console.log(imgURL);
@@ -120,7 +123,20 @@ export default function Page() {
             className="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Place your Hotel
+            {loading ? (
+              <span className="flex justify-center gap-2">
+                Creating
+                <div className="flex">
+                  <div className="relative">
+                    <div className="w-6 h-6 rounded-full absolute border-4 border-dashed border-gray-200"></div>
+
+                    <div className="w-6 h-6 rounded-full animate-spin absolute border-4 border-dashed border-white-500 border-t-transparent"></div>
+                  </div>
+                </div>
+              </span>
+            ) : (
+              <span>Place your Hotel</span>
+            )}
           </button>
         </div>
       </form>

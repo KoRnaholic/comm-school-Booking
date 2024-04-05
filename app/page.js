@@ -52,13 +52,12 @@ export default function Home() {
 
   return (
     <div className="p-10 mt-52 flex flex-wrap gap-12 justify-center items-center">
-      <NewHotel hotels={hotels} />
       {loading &&
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => {
           return <Image key={index} src={skeleton} alt="skeleton" />;
         })}
+      <NewHotel hotels={hotels} />
       {data.map((item) => {
-        console.log(item);
         let {
           xl_picture_url,
           latitude,
@@ -89,55 +88,51 @@ export default function Home() {
         }
 
         return (
-          <>
-            <div
-              onClick={() => handleClick(id, item)}
-              key={item?.id}
-              className="w-[260px] h-[360px]  rounded overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-all duration-200"
-            >
-              <span className="relative">
-                <Image
-                  className="w-full h-[220px] rounded-md relative"
-                  src={xl_picture_url}
-                  width={150}
-                  height={150}
-                  alt="Hotel"
-                  quality={100}
-                  priority
-                />
-                <Image
-                  className="absolute top-2 right-6 w-[25px] border-1 hover:scale-150 transition-all"
-                  src={heart}
-                  alt="heart"
-                />
-                {rating ? (
-                  <span className="absolute top-3 left-2 py-1 px-2 bg-slate-50 rounded-2xl text-sm font-medium">
-                    Guest favorite
-                  </span>
-                ) : (
-                  ""
-                )}
-              </span>
+          <div
+            onClick={() => handleClick(id, item)}
+            key={item?.id}
+            className="w-[260px] h-[360px]  rounded overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-all duration-200"
+          >
+            <span className="relative">
+              <Image
+                className="w-full h-[220px] rounded-md relative"
+                src={xl_picture_url}
+                width={150}
+                height={150}
+                alt="Hotel"
+                quality={100}
+                priority
+              />
+              <Image
+                className="absolute top-2 right-6 w-[25px] border-1 hover:scale-150 transition-all"
+                src={heart}
+                alt="heart"
+              />
+              {rating ? (
+                <span className="absolute top-3 left-2 py-1 px-2 bg-slate-50 rounded-2xl text-sm font-medium">
+                  Guest favorite
+                </span>
+              ) : (
+                ""
+              )}
+            </span>
 
-              <div className="px-6 py-4">
-                <div className="font-bold text-md mb-2">
-                  {item?.host_location}
-                </div>
+            <div className="px-6 py-4">
+              <div className="font-bold text-md mb-2">
+                {item?.host_location}
+              </div>
 
-                <div className="flex flex-col gap-1">
-                  <p className="text-gray-500 text-base">
-                    <Location hotelLocation={hotelLocation} />
-                  </p>
-                  <p className="text-gray-500 text-base flex gap-2">
-                    <span className="text-black font-bold ">
-                      ${item?.price}
-                    </span>
-                    per night
-                  </p>
-                </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-gray-500 text-base">
+                  <Location hotelLocation={hotelLocation} />
+                </p>
+                <p className="text-gray-500 text-base flex gap-2">
+                  <span className="text-black font-bold ">${item?.price}</span>
+                  per night
+                </p>
               </div>
             </div>
-          </>
+          </div>
         );
       })}
     </div>

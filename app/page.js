@@ -8,14 +8,36 @@ import heart from "../icons/heart.svg";
 import Location from "../components/location/Location";
 import { useRouter } from "next/navigation";
 
+import { collection, getDocs } from "firebase/firestore";
+import { db, storage } from "../lib/firebase";
+
+import NewHotel from "../components/created-hotel/NewHotel";
+
 export default function Home() {
   const [data, setData] = useState([]);
+  const [hotels, setHotels] = useState([]);
 
   const router = useRouter();
   const handleClick = (id) => {
     // Set a new URL when the button is clicked
     router.push(`/single-hotel/${id}`);
   };
+
+  useEffect(() => {
+    const getHotels = async () => {
+      const hotelsCol = collection(db, "hotels");
+      const hotelsSnapshot = await getDocs(hotelsCol);
+      const hotelsList = hotelsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setHotels(hotelsList);
+    };
+
+    getHotels();
+  }, []);
+
+  console.log(hotels);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +50,7 @@ export default function Home() {
   console.log(data);
   return (
     <div className="p-10 mt-52 flex flex-wrap gap-12 justify-center items-center">
+      <NewHotel hotels={hotels} />
       {data.map((item) => {
         let {
           xl_picture_url,
@@ -62,11 +85,11 @@ export default function Home() {
           <div
             onClick={() => handleClick(id)}
             key={item?.id}
-            className="w-[300px] h-[390px]  rounded overflow-hidden shadow-lg cursor-pointer"
+            className="w-[260px] h-[360px]  rounded overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-all duration-200"
           >
             <span className="relative">
               <Image
-                className="w-full h-[250px] rounded-md relative"
+                className="w-full h-[220px] rounded-md relative"
                 src={xl_picture_url}
                 width={150}
                 height={150}

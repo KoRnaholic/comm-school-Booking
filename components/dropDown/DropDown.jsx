@@ -46,7 +46,7 @@ export default function DropdownMenuRadioGroupDemo() {
             Gift cards
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="right">
-            Airbnb your home
+            <Link href="/create-hotel"> Airbnb your home</Link>
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="right">
             Help center

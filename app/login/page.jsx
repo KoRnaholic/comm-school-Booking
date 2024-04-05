@@ -7,7 +7,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ export default function Login() {
       );
       console.log(userCredentials);
       sessionStorage.setItem("token", userCredentials.user.accessToken);
-      //   window.location.href = "/";
+      window.location.href = "/";
     } catch (error) {
       console.error(error);
     }

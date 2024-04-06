@@ -13,10 +13,26 @@ import { db } from "../lib/firebase";
 
 import NewHotel from "../components/created-hotel/NewHotel";
 
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      console.log(user);
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 
   const router = useRouter();
   const handleClick = (id, item) => {

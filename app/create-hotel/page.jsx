@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../../lib/firebase";
 
@@ -31,8 +31,8 @@ export default function Page() {
         setLoading(true);
         const imgRef = ref(storage, `hotelimages/${file.name}`);
         const uploadResult = await uploadBytes(imgRef, file);
-        return getDownloadURL(uploadResult.ref);
         setLoading(false);
+        return getDownloadURL(uploadResult.ref);
       })
     );
     console.log(imgURL);

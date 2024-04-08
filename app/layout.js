@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import { ThemeProvider } from "../components/ui/theme/theme-provider";
+
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 

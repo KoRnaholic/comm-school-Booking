@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-export default function Page({ params }) {
+export default function Page() {
   const [data, setData] = useState([]);
   console.log(data);
 

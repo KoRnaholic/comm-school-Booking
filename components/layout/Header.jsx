@@ -6,8 +6,8 @@ import logo from "../../icons/airbnb-logo.svg";
 import globus from "../../icons/globus.svg";
 import Search from "../search/Search";
 import DropdownMenuRadioGroupDemo from "../dropDown/DropDown";
-import CalendarDropDown from "../calendar/CalendarDropDown";
-import { ModeToggle } from "../ui/toggleDarkmode";
+// import CalendarDropDown from "../calendar/CalendarDropDown";
+// import { ModeToggle } from "../ui/toggleDarkmode";
 
 export default function Header() {
   const [scroll, setSctroll] = useState(false);
